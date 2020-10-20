@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Tabs -->
+
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Height')" id="defaultOpen">Height</button>
+        <button class="tablinks" onclick="openTab(event, 'Width')">Width</button>
+      </div>
+
+    <!-- Content -->
+
+    <!-- Tab content -->
+    <div id="Height" class="tabcontent">
+        <label>iPhone 8 (375 x 667)</label>
+        <input id="inputPointW" type="number" placeholder="Enter pt value"
+        oninput="HeightConverter(this.value)"
+        onchange="HeightConverter(this.value)">
+      </p>
+
+      <p>Percentage of Screen Height: 
+        <span id="outputPercentageH"></span></p>
+      <p>iPhone X (375 x 812): <span id="outputIphoneTenH"></span></p>
+
+      <p>iPad Mini (768 x 1024): <span id="outputIpadMiniH"></span></p>
+    </div>
+  
+  <div id="Width" class="tabcontent">
+    <label>iPhone 8 (375 x 667)</label>
+        <input id="inputPointH" type="number" placeholder="Enter pt value"
+        oninput="WidthConverter(this.value)"
+        onchange="WidthConverter(this.value)">
+      </p>
+
+      <p>Percentage of Screen Width:
+        <span id="outputPercentageW"></span></p>
+      <p>iPhone X (375 x 812): <span id="outputIphoneTenW"></span></p>
+
+      <p>iPad Mini (768 x 1024): <span id="outputIpadMiniW"></span></p>
+  </div>
+    
+        
+    
+</body>
+<script>
+    function openTab(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+
+  console.log(tabName);
+}
+</script>
+<script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+<script>
+
+function roundToHundredth(value) {
+  return Number(value.toFixed(2));
+};
+
+function HeightConverter(inputNum) {
+
+  valNum = parseFloat(inputNum) || 0;
+
+  percentageWidth = parseFloat(valNum / 667);
+
+  IphoneTen = Math.ceil(percentageWidth * 812);
+  IpadMini = Math.ceil(percentageWidth * 1024);
+
+  document.getElementById("outputPercentageH").innerHTML = roundToHundredth(percentageWidth * 100) + '%';
+  document.getElementById("outputIphoneTenH").innerHTML = IphoneTen;
+  document.getElementById("outputIpadMiniH").innerHTML = IpadMini;
+
+}
+
+function WidthConverter(inputNum) {
+
+valNum = parseFloat(inputNum) || 0;
+
+percentageWidth = parseFloat(valNum / 375);
+
+IphoneTen = Math.ceil(percentageWidth * 375);
+IpadMini = Math.ceil(percentageWidth * 768);
+
+document.getElementById("outputPercentageW").innerHTML = roundToHundredth(percentageWidth * 100) + '%';
+document.getElementById("outputIphoneTenW").innerHTML = IphoneTen;
+document.getElementById("outputIpadMiniW").innerHTML = IpadMini;
+
+}
+</script>
+
+</html>
