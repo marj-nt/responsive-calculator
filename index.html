@@ -30,6 +30,8 @@
         <span id="outputPercentageH"></span></p>
       <p>iPhone X (375 x 812): <span id="outputIphoneTenH"></span></p>
 
+      <p>iPhone 8+ (414 x 736): <span id="outputIphonePlusH"></span></p>
+
       <p>iPad Mini (768 x 1024): <span id="outputIpadMiniH"></span></p>
     </div>
   
@@ -43,6 +45,8 @@
       <p>Percentage of Screen Width:
         <span id="outputPercentageW"></span></p>
       <p>iPhone X (375 x 812): <span id="outputIphoneTenW"></span></p>
+
+      <p>iPhone 8+ (414 x 736): <span id="outputIphonePlusW"></span></p>
 
       <p>iPad Mini (768 x 1024): <span id="outputIpadMiniW"></span></p>
   </div>
@@ -85,12 +89,14 @@ function HeightConverter(inputNum) {
 
   valNum = parseFloat(inputNum) || 0;
 
-  percentageWidth = parseFloat(valNum / 667);
+  percentageHeight = parseFloat(valNum / 667);
 
-  IphoneTen = Math.ceil(percentageWidth * 812);
-  IpadMini = Math.ceil(percentageWidth * 1024);
+  IphoneTen = Math.ceil(percentageHeight * 812);
+  IphonePlus = Math.ceil(percentageHeight * 736);
+  IpadMini = Math.ceil(percentageHeight * 1024);
 
-  document.getElementById("outputPercentageH").innerHTML = roundToHundredth(percentageWidth * 100) + '%';
+  document.getElementById("outputPercentageH").innerHTML = roundToHundredth(percentageHeight * 100) + '%';
+  document.getElementById("outputIphonePlusH").innerHTML = IphonePlus;
   document.getElementById("outputIphoneTenH").innerHTML = IphoneTen;
   document.getElementById("outputIpadMiniH").innerHTML = IpadMini;
 
@@ -103,9 +109,11 @@ valNum = parseFloat(inputNum) || 0;
 percentageWidth = parseFloat(valNum / 375);
 
 IphoneTen = Math.ceil(percentageWidth * 375);
+IphonePlus = Math.ceil(percentageWidth * 414);
 IpadMini = Math.ceil(percentageWidth * 768);
 
 document.getElementById("outputPercentageW").innerHTML = roundToHundredth(percentageWidth * 100) + '%';
+document.getElementById("outputIphonePlusW").innerHTML = IphonePlus;
 document.getElementById("outputIphoneTenW").innerHTML = IphoneTen;
 document.getElementById("outputIpadMiniW").innerHTML = IpadMini;
 
